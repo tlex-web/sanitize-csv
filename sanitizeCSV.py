@@ -9,7 +9,7 @@ cwd = os.getcwd()
 
 def init() -> None:
     """
-    Print user information 
+    Print information table and user data 
     """
 
     print('-'*60)
@@ -19,9 +19,9 @@ def init() -> None:
     print('-'*60)
     
     table_information = [['Parameter', 'Description', 'Value'], 
-    ['Path', 'Provide the file path', '/file.csv or C:/.../file.csv'], 
+    ['Path', 'Provide the file path', 'file.csv or C:/.../file.csv'], 
     ['Flag', 'Absolute or relative path', 'a or r'],
-    ['Delimiter', 'Delimiter used in csv file', 'semicolon']]
+    ['Delimiter', 'Delimiter used in csv file', 'e.g. ;']]
 
     print(tabulate(table_information, headers='firstrow', tablefmt='grid'))
 
@@ -77,9 +77,10 @@ def get_file_path() -> str:
 
 def sanitize_file() -> list[str]:
     """
-    Sanitize the files content from unnecessary delimiters
-    The problem with multiple delimiters occurs during the export 
-    of excel files (xls) to csv files within excel
+    Sanitize the files content from duplicate delimiters
+    Beware: This software cannot distinguish between the semantics 
+    and the syntax. Check if the removal of the delimiter lowers
+    the information of the file
     """
 
     file_path = get_file_path()
@@ -111,13 +112,15 @@ def sanitize_file() -> list[str]:
                 dic['action'].append(f'Remove: {counter}')
                 
                 tmp.append(index)
+
+            counter += 1
             
 
         sanitized_list = [i for j, i in enumerate(readableStream) if j not in tmp]
 
 
         print('-'*60)
-        print(f'Removed {len(dic["count"])} from {len(readableStream)} data entries')
+        print(f'Removed {counter} from {len(readableStream)} data entries')
         print('-'*60)
 
 
@@ -125,6 +128,10 @@ def sanitize_file() -> list[str]:
 
 
 def export_file() -> None:
+    """
+    Export the resulting data as csv file 
+    A future implementation could extract the filename and add an appendix 
+    """
 
     data = sanitize_file()
 
