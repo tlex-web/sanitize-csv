@@ -1,8 +1,8 @@
-# CLI application to sanitize CSV files from duplicate delimiters
+# CLI application to sanitize csv files from duplicate delimiters
 
 How to use this application?
 
-run `python -3 -m sanitize_csv.py` 
+run `python -3 -m sanitize_csv_files.py` 
 
 Select the file that you want to sanitize and clarify, if your path is a relative or absolute path.
 Then provide the delimiter used in the csv file.
