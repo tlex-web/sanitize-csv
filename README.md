@@ -1,4 +1,4 @@
-# CLI Application to sanitize CSV files from duplicate delimiters
+# CLI application to sanitize CSV files from duplicate delimiters
 
 How to use this application?
 
