@@ -1,6 +1,9 @@
 
+# Test files
 *.csv
-*.txt
 
-.csv
-.txt
+# Python files
+venv
+
+# Binairies
+__pycache__
