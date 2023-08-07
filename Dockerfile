@@ -17,4 +17,4 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 # run the application
-CMD [ "python3", "-m" , "sanitize_csv"]
+CMD [ "python", "-m" , "sanitize_csv"]
